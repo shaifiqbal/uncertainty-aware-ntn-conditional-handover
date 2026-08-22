@@ -1,0 +1,6 @@
+{
+  "source_url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=starlink&FORMAT=tle",
+  "group": "starlink",
+  "download_timestamp_utc": "2026-08-22T10:45:01.828192+00:00",
+  "sha256_checksum": "ac35ed3b20879f22e3ea76ce1d189889b6708451695bf5b6f601c6d0cd3a3a25"
+}
