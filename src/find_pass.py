@@ -6,7 +6,7 @@ from datetime import timedelta
 GROUND_LAT = 57.1497
 GROUND_LON = -2.0943
 GROUND_ALT_M = 65
-MIN_ELEVATION_DEG = 5.0   # search threshold for a "usable" pass start/end
+MIN_ELEVATION_DEG = 0.0   # search threshold for a "usable" pass start/end
 
 observer = wgs84.latlon(GROUND_LAT, GROUND_LON, GROUND_ALT_M)
 ts = load.timescale()
