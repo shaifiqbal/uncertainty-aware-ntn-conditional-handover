@@ -1,0 +1,5 @@
+policy,trigger_time_s,remaining_link_time_at_trigger_s,cnr_at_trigger_db,execution_overhead_s,margin_after_execution_s,status
+Fixed guard-time (5s),634,5.0,0.1510199481158736,3.1,1.9,SUCCESS (executes before expiry)
+Fixed guard-time (15s),624,15.0,0.4184706680287888,3.1,11.9,SUCCESS (executes before expiry)
+Fixed guard-time (30s),609,30.0,0.8344370738132056,3.1,26.9,SUCCESS (executes before expiry)
+Quality threshold (3.0 dB),541,98.0,2.9792668922085284,3.1,94.9,SUCCESS (executes before expiry)
