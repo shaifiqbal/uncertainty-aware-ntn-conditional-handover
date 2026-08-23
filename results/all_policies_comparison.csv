@@ -1,0 +1,8 @@
+policy,trigger_time_s,remaining_link_time_at_trigger_s,cnr_at_trigger_db,execution_overhead_s,margin_after_execution_s,status,sigma_T_s
+Fixed guard-time (5s),634,5.0,0.1510199481158736,3.1,1.9,SUCCESS (executes before expiry),
+Fixed guard-time (15s),624,15.0,0.4184706680287888,3.1,11.9,SUCCESS (executes before expiry),
+Fixed guard-time (30s),609,30.0,0.8344370738132056,3.1,26.9,SUCCESS (executes before expiry),
+Point-prediction (no margin),636,3.0,0.0984361816348382,3.1,-0.10000000000000009,LATE (handover would fail),
+Quality threshold (3.0 dB),541,98.0,2.9792668922085284,3.1,94.9,SUCCESS (executes before expiry),
+Conservative fixed-margin (60s),579,60.0,1.724574113435324,3.1,56.9,SUCCESS (executes before expiry),
+"Proposed (uncertainty-aware, z_alpha=1.645)",560,79.0,2.3327870862420923,3.1,75.9,SUCCESS (executes before expiry),46.718077455487766
