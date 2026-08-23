@@ -1,0 +1,62 @@
+# ISETC'26 - Uncertainty-Aware Conditional Handover Timing
+# Frozen scenario configuration - all Monte Carlo runs must reference these
+# values rather than hardcoded constants, for reproducibility.
+
+ground_station:
+  name: "Aberdeen, Scotland"
+  latitude_deg: 57.1497
+  longitude_deg: -2.0943
+  altitude_m: 65
+
+satellite_subset:
+  source: "CelesTrak GP catalog, group=starlink"
+  source_url: "https://celestrak.org/NORAD/elements/gp.php?GROUP=starlink&FORMAT=tle"
+  downloaded: "2026-08-22"
+  satellites:
+    - {name: "STARLINK-1008", norad_id: 44714}
+    - {name: "STARLINK-1012", norad_id: 44718}
+    - {name: "STARLINK-1017", norad_id: 44723}
+    - {name: "STARLINK-1020", norad_id: 44725}
+    - {name: "STARLINK-1036", norad_id: 44741}
+    - {name: "STARLINK-1039", norad_id: 44744}
+
+pass_geometry:
+  min_elevation_deg_for_visibility: 0.0   # AOS/LOS horizon boundary (geometric visibility)
+  min_max_elevation_deg_for_candidacy: 10.0  # NEW: minimum peak elevation for a pass to
+    # qualify as a viable serving-link candidate in experiments. Passes below this are
+    # excluded from the Monte Carlo trial pool - a real UE would not select a link this
+    # marginal as a serving satellite in the first place. Documented modelling decision,
+    # not a fitted/tuned parameter.
+
+link_budget:
+  carrier_freq_hz: 2.0e9   # S-band, 2 GHz
+  eirp_density_dbw_mhz: 34.0   # 3GPP TR 38.821 Table 6.1.1.1-1 (Set-2 S-band)
+  bandwidth_mhz: 30.0
+  ue_gt_db: -36.6   # 3GPP TR 38.811 Table 4.4-1
+  k_boltzmann_dbw_k_hz: -228.6
+  atmospheric_loss_db: 0.5   # documented assumption, clear-sky S-band
+  cnr_min_db: 0.0   # usable-link threshold, matches Qureshi et al. IJERT 2026
+
+uncertainty_model:
+  sigma_elev_deg: 1.0
+  sigma_margin_db: 1.5
+  sigma_meas_s: 0.2
+  sigma_delay_s: 1.0
+  z_alpha_default: 1.645   # ~95% one-sided confidence bound
+  min_dcnr_dt_db_s: 0.01   # local-linearization validity floor (culmination guard)
+
+handover_execution:
+  t_meas_s: 0.5
+  t_rrc_s: 2.0
+  t_exec_s: 0.1
+  t_margin_s: 0.5
+  # total_overhead_s = 3.1 (sum of above)
+
+baselines:
+  fixed_guard_times_s: [5, 15, 30]
+  quality_threshold_db: 3.0
+  conservative_fixed_margin_s: 60
+
+monte_carlo:
+  min_repetitions_per_scenario: 30
+  random_seed_base: 42   # each seed = random_seed_base + trial_index, logged per run

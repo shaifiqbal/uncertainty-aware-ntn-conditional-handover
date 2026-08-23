@@ -1,0 +1,6 @@
+satellite,max_elevation_deg,duration_s,proposed_status,proposed_trigger_s,guard15_status,quality3db_status
+STARLINK-1008,10.6,500.0,SUCCESS (executes before expiry),295,SUCCESS (executes before expiry),SUCCESS (executes before expiry)
+STARLINK-1039,17.88,616.3,SUCCESS (executes before expiry),343,SUCCESS (executes before expiry),SUCCESS (executes before expiry)
+STARLINK-1020,24.08,572.9,SUCCESS (executes before expiry),490,SUCCESS (executes before expiry),SUCCESS (executes before expiry)
+STARLINK-1017,36.59,665.9,SUCCESS (executes before expiry),552,SUCCESS (executes before expiry),SUCCESS (executes before expiry)
+STARLINK-1039,42.47,680.2,SUCCESS (executes before expiry),563,SUCCESS (executes before expiry),SUCCESS (executes before expiry)
