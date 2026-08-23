@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
-
+SIGMA_T_CAP_S = 60.0  # ceiling on time-uncertainty estimate — beyond this, the local-linearization
+# conversion is no longer physically meaningful; documented assumption, same rationale as the
+# MIN_DCNR_DT_DB_S floor (both guard against the same slope-based instability)
 # Documented uncertainty parameter ranges (sensitivity-analysis basis,
 # consistent with noise levels used in the closest related work - Qureshi et al., IJERT 2026)
 SIGMA_ELEV_DEG = 1.0      # elevation-angle estimation error (deg)
