@@ -1,0 +1,4 @@
+configuration,z_alpha,includes_delay_term,failure_probability,avg_excess_margin_s
+Full proposed model,0.84,True,0.0,50.18048731092849
+No uncertainty margin (z_alpha=0),0.0,True,0.5416666666666666,17.996502404436715
+No measurement/delay term,0.84,False,0.0,50.18048731092849
