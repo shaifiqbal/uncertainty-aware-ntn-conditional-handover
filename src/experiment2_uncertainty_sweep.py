@@ -91,6 +91,8 @@ print(f"{len(base_trials)} of {N_TRIALS} trials usable")
 
 def evaluate_policy_at_sigma(sigma_margin_db, policy):
     """policy: 'proposed', 'guard15', or 'conservative60'"""
+    premature_flags = []
+    interruptions = []
     outcomes = []
     for t in base_trials:
         df, peak_idx = t["df"], t["peak_idx"]
@@ -126,15 +128,19 @@ def evaluate_policy_at_sigma(sigma_margin_db, policy):
         trigger_s = hit.iloc[0]["seconds_from_rise"]
         true_remaining_at_trigger = t["true_expiry_s"] - trigger_s
         margin_true = true_remaining_at_trigger - t["actual_overhead_s"]
-        outcomes.append(margin_true < 0)
-    return np.mean(outcomes)
+        failure = margin_true < 0
+        outcomes.append(failure)
+        premature_flags.append((not failure) and (margin_true > 30.0))
+        interruptions.append(abs(margin_true) if failure else 0.0)
+    return np.mean(outcomes), np.mean(premature_flags) if premature_flags else np.nan, np.mean(interruptions) if interruptions else 0.0
 
 
 rows = []
 for sigma in SIGMA_MARGIN_SWEEP_DB:
     for policy in ["proposed", "guard15", "conservative60"]:
-        fail_prob = evaluate_policy_at_sigma(sigma, policy)
-        rows.append({"sigma_margin_db": sigma, "policy": policy, "failure_probability": fail_prob})
+        fail_prob, premature_rate, avg_interruption = evaluate_policy_at_sigma(sigma, policy)
+        rows.append({"sigma_margin_db": sigma, "policy": policy, "failure_probability": fail_prob,
+                     "premature_rate": premature_rate, "avg_interruption_s": avg_interruption})
 
 sweep_df = pd.DataFrame(rows)
 sweep_df.to_csv("results/experiment2_uncertainty_sweep.csv", index=False)
