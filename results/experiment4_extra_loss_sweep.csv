@@ -1,0 +1,6 @@
+extra_loss_db,min_max_elev,n_candidates,n_usable_trials,proposed_failure,guard15_failure
+0.0,20.0,48,24,0.0,0.375
+1.0,20.0,48,40,0.075,0.425
+2.0,20.0,48,40,0.175,0.45
+3.0,20.0,48,40,0.175,0.425
+5.0,20.0,48,40,0.175,0.425
