@@ -1,0 +1,25 @@
+{
+ "n_sats": 100,
+ "lat": 57.1497,
+ "lon": -2.0943,
+ "alt_m": 65.0,
+ "window_h": 72,
+ "dt_s": 1.0,
+ "tle_sha256": "1f68ffe53e866a9ae2649957fa05fcf54b07f6fce21112f08d91c3ae6eb2b86f",
+ "first_epoch": "2026-08-21T22:00:09Z",
+ "n_pass_pool": 790,
+ "n_cal_passes": 395,
+ "n_test_passes": 395,
+ "n_excluded_pool": 370,
+ "n_test": 1000,
+ "n_cal": 1000,
+ "seeds": {
+  "test": 42,
+  "cal": 100000
+ },
+ "z_op": 1.0,
+ "target_fail": 0.01,
+ "z_tuned": 1.0,
+ "g_tuned": 60.0,
+ "runtime_s": 879.4
+}
